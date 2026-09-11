@@ -67,15 +67,12 @@ h1, h2, h3, h4, .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 5%;
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 1px 0 rgba(0,0,0,0.05);
-    position: sticky;
+    padding: 1.5rem 5%;
+    position: fixed;
+    width: 100%;
     top: 0;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s, padding 0.3s, box-shadow 0.3s;
 }
 
 .navbar.scrolled {
@@ -84,9 +81,15 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    border-radius: 4px;
 }
 
 .nav-links {
