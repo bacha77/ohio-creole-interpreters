@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Ohio Creole Interpreters</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="logo">Ohio Creole Interpreters</div>
+        
+        <div class="hamburger" id="hamburger">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <div class="nav-links" id="nav-links">
+            <a href="index.html#services">Services</a>
+            <a href="index.html#why-us">Why Us</a>
+            <a href="careers.html">Join Our Roster</a>
+            <a href="index.html#contact" class="btn-primary">Request Interpreter</a>
+        </div>
+    </nav>
+
+    <header class="hero" style="min-height: 40vh; padding: 6rem 5% 4rem;">
+        <div class="hero-content fade-in" style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h1>Join Our Interpreter Roster</h1>
+            <p>We are actively seeking certified Haitian Creole interpreters in Ohio for high-paying in-person assignments.</p>
+        </div>
+    </header>
+
+    <section class="contact" style="padding-top: 4rem;">
+        <div class="contact-container fade-in">
+            <h2>Independent Contractor Application</h2>
+            <p>Fill out the form below to begin the onboarding process. We pay competitive hourly rates with minimums.</p>
+            
+            <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="modern-form">
+                <div class="form-group">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Legal Name" required>
+                    <label for="fullName">Full Legal Name</label>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                        <label for="email">Email Address</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                        <label for="phone">Phone Number</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="city" name="city" placeholder="City of Residence (e.g., Columbus, Springfield)" required>
+                    <label for="city">City of Residence</label>
+                </div>
+
+                <div class="form-group">
+                    <select id="certification" name="certification" required>
+                        <option value="" disabled selected>Current Certification Level...</option>
+                        <option value="medical_cchi">Medical: CCHI / NBCMI</option>
+                        <option value="legal_court">Legal: Court Certified</option>
+                        <option value="bridging_the_gap">Trained: Bridging the Gap / CoreCHI</option>
+                        <option value="uncertified_fluent">Fluent (Not yet certified)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <input type="url" id="linkedin" name="linkedin" placeholder="Link to Resume or LinkedIn Profile">
+                    <label for="linkedin">Link to Resume or LinkedIn Profile</label>
+                </div>
+
+                <button type="submit" class="btn-primary full-width large">Submit Application <i class="fa-solid fa-arrow-right"></i></button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Ohio Creole Interpreters</h3>
+                <p>Professional Haitian Creole translation bridging the communication gap in Ohio.</p>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p><i class="fa-solid fa-envelope"></i> dispatch@ohiocreoleinterpreters.com</p>
+                <p><i class="fa-solid fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fa-solid fa-map-pin"></i> Columbus & Springfield, OH</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ohio Creole Interpreters. All rights reserved. | <a href="index.html" style="color: #94A3B8;">Home</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
