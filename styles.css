@@ -87,9 +87,10 @@ h1, h2, h3, h4, .logo {
 }
 
 .logo img {
-    height: 50px;
+    height: 80px;
     width: auto;
-    border-radius: 4px;
+    border-radius: 6px;
+    transform: scale(1.1); /* Slightly scales it up to counter built-in white space */
 }
 
 .nav-links {
