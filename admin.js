@@ -39,6 +39,94 @@ document.addEventListener('DOMContentLoaded', () => {
                     await logoutUser();
                 });
             }
+
+            // -- FIRESTORE DATABASE LOGIC --
+            const { db, collection, addDoc, getDocs } = window.firebaseDb;
+
+            // Load Interpreters
+            const loadInterpreters = async () => {
+                const rosterTbody = document.getElementById('roster-tbody');
+                if (!rosterTbody) return;
+                
+                try {
+                    const querySnapshot = await getDocs(collection(db, "interpreters"));
+                    rosterTbody.innerHTML = ''; // Clear table
+                    
+                    querySnapshot.forEach((doc) => {
+                        const data = doc.data();
+                        const tr = document.createElement('tr');
+                        
+                        let statusClass = data.status === 'Active' ? 'badge-success' : 'badge-warning';
+
+                        tr.innerHTML = `
+                            <td>${data.name}</td>
+                            <td>${data.phone}</td>
+                            <td>${data.location}</td>
+                            <td>${data.certification}</td>
+                            <td><span class="${statusClass}">${data.status || 'Active'}</span></td>
+                            <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                        `;
+                        rosterTbody.appendChild(tr);
+                    });
+                } catch (error) {
+                    console.error("Error fetching interpreters:", error);
+                }
+            };
+
+            // Call load immediately if on dashboard
+            loadInterpreters();
+
+            // Handle Add Interpreter Modal
+            const btnAddInterpreter = document.getElementById('btn-add-interpreter');
+            const addInterpreterOverlay = document.getElementById('add-interpreter-overlay');
+            const closeInterpreterModal = document.getElementById('close-interpreter-modal');
+            const addInterpreterForm = document.getElementById('add-interpreter-form');
+
+            if (btnAddInterpreter) {
+                btnAddInterpreter.addEventListener('click', () => {
+                    addInterpreterOverlay.classList.remove('hidden');
+                });
+            }
+
+            if (closeInterpreterModal) {
+                closeInterpreterModal.addEventListener('click', () => {
+                    addInterpreterOverlay.classList.add('hidden');
+                });
+            }
+
+            if (addInterpreterForm) {
+                addInterpreterForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    const newInterpreter = {
+                        name: document.getElementById('int-name').value,
+                        phone: document.getElementById('int-phone').value,
+                        location: document.getElementById('int-location').value,
+                        certification: document.getElementById('int-cert').value,
+                        status: 'Active',
+                        createdAt: new Date().toISOString()
+                    };
+
+                    try {
+                        const submitBtn = addInterpreterForm.querySelector('button[type="submit"]');
+                        submitBtn.textContent = 'Saving...';
+                        
+                        // Write to Firestore
+                        await addDoc(collection(db, "interpreters"), newInterpreter);
+                        
+                        // Reset and close modal
+                        addInterpreterForm.reset();
+                        addInterpreterOverlay.classList.add('hidden');
+                        submitBtn.textContent = 'Save Interpreter';
+                        
+                        // Reload the table
+                        loadInterpreters();
+                    } catch (error) {
+                        console.error("Error adding interpreter:", error);
+                        alert("Failed to add interpreter to database.");
+                    }
+                });
+            }
         }
     }, 500);
 

@@ -33,6 +33,40 @@
         </div>
     </div>
 
+    <!-- Add Interpreter Modal -->
+    <div id="add-interpreter-overlay" class="login-overlay hidden">
+        <div class="login-modal" style="max-width: 500px;">
+            <div class="panel-header" style="margin-bottom: 1rem;">
+                <h2 style="margin: 0;">Add New Interpreter</h2>
+                <button type="button" class="btn-icon" id="close-interpreter-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="add-interpreter-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="int-name" class="form-control" required style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem; margin-top: 0.25rem;">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" id="int-phone" class="form-control" required style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem; margin-top: 0.25rem;">
+                </div>
+                <div class="form-group">
+                    <label>Location (City, State)</label>
+                    <input type="text" id="int-location" class="form-control" required style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem; margin-top: 0.25rem;">
+                </div>
+                <div class="form-group">
+                    <label>Certification/Tier</label>
+                    <select id="int-cert" class="form-control" style="width: 100%; padding: 0.5rem; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1.5rem; margin-top: 0.25rem;">
+                        <option value="Court Certified">Court Certified</option>
+                        <option value="Medical (CCHI)">Medical (CCHI)</option>
+                        <option value="Fluent (Tested)">Fluent (Tested)</option>
+                        <option value="Fluent (In Training)">Fluent (In Training)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">Save Interpreter</button>
+            </form>
+        </div>
+    </div>
+
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
@@ -162,7 +196,7 @@
                 <div class="data-panel">
                     <div class="panel-header">
                         <h2>Interpreter Roster</h2>
-                        <button class="btn-primary"><i class="fa-solid fa-user-plus"></i> Add Interpreter</button>
+                        <button id="btn-add-interpreter" class="btn-primary"><i class="fa-solid fa-user-plus"></i> Add Interpreter</button>
                     </div>
                     <table class="data-table">
                         <thead>
@@ -175,31 +209,8 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pierre D.</td>
-                                <td>(614) 555-0192</td>
-                                <td>Columbus, OH</td>
-                                <td>Court Certified</td>
-                                <td><span class="status badge-success">Active</span></td>
-                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>Jean B.</td>
-                                <td>(614) 555-8834</td>
-                                <td>Springfield, OH</td>
-                                <td>Medical (CCHI)</td>
-                                <td><span class="status badge-success">Active</span></td>
-                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
-                            </tr>
-                            <tr>
-                                <td>Marie F.</td>
-                                <td>(937) 555-2241</td>
-                                <td>Springfield, OH</td>
-                                <td>Fluent (In Training)</td>
-                                <td><span class="status badge-warning">Onboarding</span></td>
-                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
-                            </tr>
+                        <tbody id="roster-tbody">
+                            <!-- Populated dynamically by Firebase -->
                         </tbody>
                     </table>
                 </div>
