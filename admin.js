@@ -1,4 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // -- FIREBASE AUTHENTICATION --
+    const loginOverlay = document.getElementById('login-overlay');
+    const loginForm = document.getElementById('login-form');
+    const loginError = document.getElementById('login-error');
+    const btnLogout = document.getElementById('btn-logout');
+
+    // Wait slightly to ensure module loaded
+    setTimeout(() => {
+        if (window.firebaseAuth) {
+            const { auth, loginUser, logoutUser, onAuthStateChanged } = window.firebaseAuth;
+
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    loginOverlay.classList.add('hidden');
+                } else {
+                    loginOverlay.classList.remove('hidden');
+                }
+            });
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    const email = document.getElementById('login-email').value;
+                    const password = document.getElementById('login-password').value;
+                    
+                    try {
+                        loginError.style.display = 'none';
+                        await loginUser(email, password);
+                    } catch (error) {
+                        loginError.textContent = "Invalid email or password.";
+                        loginError.style.display = 'block';
+                    }
+                });
+            }
+
+            if (btnLogout) {
+                btnLogout.addEventListener('click', async () => {
+                    await logoutUser();
+                });
+            }
+        }
+    }, 500);
+
     const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
     const viewSections = document.querySelectorAll('.view-section');
 
