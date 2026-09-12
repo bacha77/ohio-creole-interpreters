@@ -84,13 +84,15 @@ h1, h2, h3, h4, .logo {
     display: flex;
     align-items: center;
     text-decoration: none;
+    margin-left: -10px;
 }
 
 .logo img {
-    height: 80px;
+    height: 90px;
     width: auto;
     border-radius: 6px;
-    transform: scale(1.1); /* Slightly scales it up to counter built-in white space */
+    transform: scale(1.8);
+    transform-origin: center left;
 }
 
 .nav-links {
