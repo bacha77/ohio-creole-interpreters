@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // -- GLOBAL BUTTON ALERTS (Placeholder for backend) --
     document.querySelectorAll('.btn-primary').forEach(btn => {
-        if (!btn.hasAttribute('onclick') && !btn.closest('td')) {
+        if (!btn.hasAttribute('onclick') && !btn.closest('td') && !btn.closest('#login-form')) {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 alert("This feature will be fully functional once the backend database is connected!");
