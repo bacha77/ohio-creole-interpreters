@@ -122,8 +122,14 @@
             <h2>Request an Interpreter</h2>
             <p>Need coverage this week? Submit a request and our dispatch team will confirm availability within 2 hours.</p>
             
-            <!-- Updated to use Formspree -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST" class="modern-form">
+            <!-- Updated to use FormSubmit -->
+            <form action="https://formsubmit.co/info@ohiocreoleinterpreters.com" method="POST" class="modern-form">
+                <!-- Hidden inputs for routing and formatting -->
+                <input type="hidden" name="_cc" value="derickson.pierre@ohiocreoleinterpreters.com">
+                <input type="hidden" name="_subject" value="New Website Interpreter Request">
+                <input type="hidden" name="_next" value="https://ohiocreoleinterpreters.com">
+                <input type="hidden" name="_template" value="table">
+                
                 <div class="form-group">
                     <input type="text" id="facilityName" name="facilityName" placeholder="Facility / Organization Name" required>
                     <label for="facilityName">Facility / Organization Name</label>
@@ -156,9 +162,6 @@
                     </select>
                 </div>
                 <button type="submit" class="btn-primary full-width large">Submit Request <i class="fa-solid fa-arrow-right"></i></button>
-                <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem; color: #64748B;">
-                    Note: To activate this form, replace 'YOUR_FORM_ID_HERE' with your Formspree ID.
-                </p>
             </form>
         </div>
     </section>
@@ -171,7 +174,7 @@
             </div>
             <div class="footer-contact">
                 <h4>Contact Us</h4>
-                <p><i class="fa-solid fa-envelope"></i> dispatch@ohiocreoleinterpreters.com</p>
+                <p><i class="fa-solid fa-envelope"></i> info@ohiocreoleinterpreters.com</p>
                 <p><i class="fa-solid fa-phone"></i> (555) 123-4567</p>
                 <p><i class="fa-solid fa-map-pin"></i> Columbus & Springfield, OH</p>
             </div>
