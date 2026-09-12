@@ -18,11 +18,14 @@
                 <h2>OCI Admin</h2>
             </div>
             <nav class="sidebar-nav">
-                <a href="#" class="nav-item active" data-target="dispatch-view">
-                    <i class="fa-solid fa-truck-fast"></i> Dispatch
+                <a href="#" class="nav-item active" data-target="schedule-view">
+                    <i class="fa-solid fa-calendar-day"></i> Daily Schedule
                 </a>
                 <a href="#" class="nav-item" data-target="roster-view">
                     <i class="fa-solid fa-users"></i> Interpreter Roster
+                </a>
+                <a href="#" class="nav-item" data-target="bookkeeping-view">
+                    <i class="fa-solid fa-file-invoice-dollar"></i> Bookkeeping (1099)
                 </a>
                 <a href="#" class="nav-item" data-target="outreach-view">
                     <i class="fa-solid fa-envelope-open-text"></i> Outreach Strategy
@@ -49,13 +52,13 @@
                 </div>
             </header>
 
-            <!-- Dispatch View -->
-            <section id="dispatch-view" class="view-section active">
+            <!-- Daily Schedule View -->
+            <section id="schedule-view" class="view-section active">
                 <div class="metrics-grid">
                     <div class="metric-card">
                         <div class="metric-icon"><i class="fa-solid fa-calendar-check"></i></div>
                         <div class="metric-info">
-                            <h3>Active Jobs</h3>
+                            <h3>Jobs Today</h3>
                             <p>12</p>
                         </div>
                     </div>
@@ -67,51 +70,58 @@
                         </div>
                     </div>
                     <div class="metric-card success">
-                        <div class="metric-icon"><i class="fa-solid fa-check-double"></i></div>
+                        <div class="metric-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
                         <div class="metric-info">
-                            <h3>Completed (Today)</h3>
-                            <p>8</p>
+                            <h3>Total Billed Hours</h3>
+                            <p>24.5</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="data-panel">
                     <div class="panel-header">
-                        <h2>Job Board</h2>
+                        <h2>Daily Dispatch Schedule</h2>
                         <button class="btn-primary"><i class="fa-solid fa-plus"></i> New Request</button>
                     </div>
                     <table class="data-table">
                         <thead>
                             <tr>
-                                <th>Date/Time</th>
-                                <th>Facility</th>
+                                <th>Time / Hours</th>
+                                <th>Facility & Address</th>
                                 <th>Type</th>
                                 <th>Status</th>
-                                <th>Assigned To</th>
+                                <th>Assigned Contractor</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Oct 12, 09:00 AM</td>
-                                <td>OhioHealth Riverside</td>
+                                <td>
+                                    <strong>09:00 AM - 11:00 AM</strong><br>
+                                    <span style="color:var(--text-muted); font-size:0.8rem;">(2.0 Hours)</span>
+                                </td>
+                                <td>OhioHealth Riverside<br><span style="color:var(--text-muted); font-size:0.8rem;">3535 Olentangy River Rd</span></td>
                                 <td>Medical</td>
                                 <td><span class="status badge-warning">Pending</span></td>
                                 <td>
-                                    <select class="assign-dropdown">
-                                        <option value="" disabled selected>Assign...</option>
+                                    <select class="assign-dropdown" style="width:100%;">
+                                        <option value="" disabled selected>Assign Contractor...</option>
                                         <option value="1">Jean B.</option>
                                         <option value="2">Marie F.</option>
+                                        <option value="3">Pierre D.</option>
                                     </select>
                                 </td>
-                                <td><button class="btn-icon"><i class="fa-solid fa-paper-plane"></i></button></td>
+                                <td><button class="btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">Save</button></td>
                             </tr>
                             <tr>
-                                <td>Oct 12, 11:30 AM</td>
-                                <td>Franklin County Court</td>
+                                <td>
+                                    <strong>11:30 AM - 12:30 PM</strong><br>
+                                    <span style="color:var(--text-muted); font-size:0.8rem;">(1.0 Hour - 2Hr Min Applies)</span>
+                                </td>
+                                <td>Franklin County Court<br><span style="color:var(--text-muted); font-size:0.8rem;">373 S High St</span></td>
                                 <td>Legal</td>
-                                <td><span class="status badge-success">Assigned</span></td>
-                                <td>Pierre D.</td>
+                                <td><span class="status badge-success">Dispatched</span></td>
+                                <td><strong>Pierre D.</strong></td>
                                 <td><button class="btn-icon"><i class="fa-solid fa-pen"></i></button></td>
                             </tr>
                         </tbody>
@@ -161,6 +171,72 @@
                                 <td>Fluent (In Training)</td>
                                 <td><span class="status badge-warning">Onboarding</span></td>
                                 <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Bookkeeping View -->
+            <section id="bookkeeping-view" class="view-section">
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <h2>1099 Contractor Payroll & Bookkeeping</h2>
+                        <div style="display:flex; gap:1rem;">
+                            <select class="assign-dropdown">
+                                <option>Current Week</option>
+                                <option>Last Week</option>
+                                <option>Month to Date</option>
+                            </select>
+                            <button class="btn-primary"><i class="fa-solid fa-download"></i> Export Payroll</button>
+                        </div>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Contractor Name</th>
+                                <th>Jobs Completed</th>
+                                <th>Total Hours</th>
+                                <th>Agreed Hourly Rate</th>
+                                <th>Total Payout Due</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pierre D.</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">Court Certified</span></td>
+                                <td>4</td>
+                                <td>9.5 <span style="color:var(--text-muted); font-size:0.7rem;">(incl. min)</span></td>
+                                <td>
+                                    <select class="assign-dropdown" style="width:100px;">
+                                        <option value="30">$30 / hr</option>
+                                        <option value="40">$40 / hr</option>
+                                        <option value="50" selected>$50 / hr</option>
+                                        <option value="75">$75 / hr</option>
+                                        <option value="150">$150 / hr</option>
+                                    </select>
+                                </td>
+                                <td><strong style="color:var(--success); font-size:1.1rem;">$475.00</strong></td>
+                                <td><span class="status badge-warning">Unpaid</span></td>
+                                <td><button class="btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.8rem;">Mark Paid</button></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Jean B.</strong><br><span style="color:var(--text-muted); font-size:0.8rem;">Medical (CCHI)</span></td>
+                                <td>6</td>
+                                <td>14.0</td>
+                                <td>
+                                    <select class="assign-dropdown" style="width:100px;">
+                                        <option value="30">$30 / hr</option>
+                                        <option value="40" selected>$40 / hr</option>
+                                        <option value="50">$50 / hr</option>
+                                        <option value="75">$75 / hr</option>
+                                        <option value="150">$150 / hr</option>
+                                    </select>
+                                </td>
+                                <td><strong style="color:var(--success); font-size:1.1rem;">$560.00</strong></td>
+                                <td><span class="status badge-success">Paid</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-file-invoice"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
