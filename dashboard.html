@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Ohio Creole Interpreters</title>
+    <link rel="icon" type="image/jpeg" href="images/logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="images/logo.jpg" alt="Logo" class="admin-logo">
+                <h2>OCI Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-target="dispatch-view">
+                    <i class="fa-solid fa-truck-fast"></i> Dispatch
+                </a>
+                <a href="#" class="nav-item" data-target="roster-view">
+                    <i class="fa-solid fa-users"></i> Interpreter Roster
+                </a>
+                <a href="#" class="nav-item" data-target="settings-view">
+                    <i class="fa-solid fa-gear"></i> Settings
+                </a>
+                <a href="index.html" class="nav-item">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Back to Site
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search interpreters, jobs, hospitals...">
+                </div>
+                <div class="user-profile">
+                    <span>Admin</span>
+                    <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                </div>
+            </header>
+
+            <!-- Dispatch View -->
+            <section id="dispatch-view" class="view-section active">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <div class="metric-info">
+                            <h3>Active Jobs</h3>
+                            <p>12</p>
+                        </div>
+                    </div>
+                    <div class="metric-card warning">
+                        <div class="metric-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="metric-info">
+                            <h3>Unassigned</h3>
+                            <p>3</p>
+                        </div>
+                    </div>
+                    <div class="metric-card success">
+                        <div class="metric-icon"><i class="fa-solid fa-check-double"></i></div>
+                        <div class="metric-info">
+                            <h3>Completed (Today)</h3>
+                            <p>8</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <h2>Job Board</h2>
+                        <button class="btn-primary"><i class="fa-solid fa-plus"></i> New Request</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date/Time</th>
+                                <th>Facility</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Assigned To</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Oct 12, 09:00 AM</td>
+                                <td>OhioHealth Riverside</td>
+                                <td>Medical</td>
+                                <td><span class="status badge-warning">Pending</span></td>
+                                <td>
+                                    <select class="assign-dropdown">
+                                        <option value="" disabled selected>Assign...</option>
+                                        <option value="1">Jean B.</option>
+                                        <option value="2">Marie F.</option>
+                                    </select>
+                                </td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-paper-plane"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Oct 12, 11:30 AM</td>
+                                <td>Franklin County Court</td>
+                                <td>Legal</td>
+                                <td><span class="status badge-success">Assigned</span></td>
+                                <td>Pierre D.</td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-pen"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Roster View -->
+            <section id="roster-view" class="view-section">
+                <div class="data-panel">
+                    <div class="panel-header">
+                        <h2>Interpreter Roster</h2>
+                        <button class="btn-primary"><i class="fa-solid fa-user-plus"></i> Add Interpreter</button>
+                    </div>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Location</th>
+                                <th>Certification</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pierre D.</td>
+                                <td>(614) 555-0192</td>
+                                <td>Columbus, OH</td>
+                                <td>Court Certified</td>
+                                <td><span class="status badge-success">Active</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Jean B.</td>
+                                <td>(614) 555-8834</td>
+                                <td>Springfield, OH</td>
+                                <td>Medical (CCHI)</td>
+                                <td><span class="status badge-success">Active</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                            </tr>
+                            <tr>
+                                <td>Marie F.</td>
+                                <td>(937) 555-2241</td>
+                                <td>Springfield, OH</td>
+                                <td>Fluent (In Training)</td>
+                                <td><span class="status badge-warning">Onboarding</span></td>
+                                <td><button class="btn-icon"><i class="fa-solid fa-ellipsis-vertical"></i></button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+            
+            <!-- Settings View (Placeholder) -->
+            <section id="settings-view" class="view-section">
+                <div class="data-panel">
+                    <h2>Settings</h2>
+                    <p>Database and API connections will be configured here.</p>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    <script src="admin.js"></script>
+</body>
+</html>
